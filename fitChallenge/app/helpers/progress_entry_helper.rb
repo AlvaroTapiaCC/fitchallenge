@@ -1,0 +1,2 @@
+module ProgressEntryHelper
+end
