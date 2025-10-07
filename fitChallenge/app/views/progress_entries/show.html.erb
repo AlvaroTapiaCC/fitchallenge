@@ -1,0 +1,10 @@
+<div class="container mt-5">
+    <div class="card mx-auto">
+        <div class="card-body text-center">
+            <h2 class="card-title mb-3"><%= @progress_entry.participant.user.username %></h2>
+            <p class="card-text mb-1"><strong>Date:</strong> <%= @progress_entry.progress_date %></p>
+            <p class="card-text mb-1"><strong>Description:</strong> <%= @progress_entry.description %></p>
+            <p class="card-text fw-bold"><strong>Points Earned:</strong> <%= @progress_entry.points_earned %></p>
+        </div>
+    </div>
+</div>

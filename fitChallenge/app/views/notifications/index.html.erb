@@ -1,0 +1,23 @@
+<div class="container py-4">
+    <h1 class="mb-4 text-center">Current notifications</h1>
+    <table id="notifications" class="table table-striped">
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Message</th>
+                <th>Read</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @notifications.each do |notification| %>
+                <tr>
+                    <td><%= notification.user.username %></td>
+                    <td><%= notification.message %></td>
+                    <td><%= notification.read_status %></td>
+                    <td><%= link_to 'notification info', notification, class: 'btn btn-primary' %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
