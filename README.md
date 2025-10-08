@@ -12,7 +12,7 @@ The folder 'fitChallenge' contains the actual app for the rest of the assignment
 
 The folder 'assignment2' contains the modified database model with a few changes done to it. The timestamp columns were changed to match the default columns added by rails. Also added a `username` column for `User`, and separated the name in `first_name` and `last_name`.
 
-# App Implementations
+### App Implementations
 
 All necessary models were properly created, adding the ssociations and validations needed so the models work without errors. Controllers were also set up accordingly for each model, adding views for index and show actions only for now.
 
