@@ -1,27 +1,16 @@
-<div class="container py-4">
-    <h1 class="p-4 mb-4 text-center">Badges earned by users</h1>
-    <div class="row">
-        <% @user_badges.each do |user_badge| %>
-            <div class="col-md-4 mb-3">
-                <%= link_to user_badge, class: "text-decoration-none" do %>
-                    <div class="card h-100">
-                        <div class="card-header text-center fw-bold">
-                            <%= user_badge.user.username %>
-                        </div>
-                        <div class="card-body">
-                            <div class="row align-items-center">
-                                <div class="col-6">
-                                    <p class="card-text mb-1"><strong>Badge:</strong> <%= user_badge.badge.name %></p>
-                                    <p class="card-text"><small class="text-muted">Earned at: <%= user_badge.created_at.strftime('%Y-%m-%d') %></small></p>
-                                </div>
-                                <div class="col-6 text-center">
-                                    <%= image_tag user_badge.badge.icon_url, alt: user_badge.badge.name, class: "img-fluid rounded w-50" if user_badge.badge.icon_url.present? %>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "User badges" %>
+
+<h1>User badges</h1>
+
+<div id="user_badges">
+  <% @user_badges.each do |user_badge| %>
+    <%= render user_badge %>
+    <p>
+      <%= link_to "Show this user badge", user_badge %>
+    </p>
+  <% end %>
 </div>
+
+<%= link_to "New user badge", new_user_badge_path %>

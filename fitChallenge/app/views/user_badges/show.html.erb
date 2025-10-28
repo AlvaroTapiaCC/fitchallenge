@@ -1,10 +1,10 @@
-<div class="container mt-5">
-    <div class="card mx-auto">
-        <div class="card-body text-center">
-            <h2 class="card-title mb-3"><%= @user_badge.user.username %></h2>
-            <h5 class="card-text mb-3"><%= @user_badge.badge.name %></h5>
-            <p class="card-text mb-4"><%= @user_badge.badge.description %></p>
-            <p class="card-text text-muted mb-1">Earned at <%= @user_badge.created_at %></p>
-        </div>
-    </div>
+<p style="color: green"><%= notice %></p>
+
+<%= render @user_badge %>
+
+<div>
+  <%= link_to "Edit this user badge", edit_user_badge_path(@user_badge) %> |
+  <%= link_to "Back to user badges", user_badges_path %>
+
+  <%= button_to "Destroy this user badge", @user_badge, method: :delete %>
 </div>

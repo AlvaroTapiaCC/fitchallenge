@@ -1,0 +1,11 @@
+<% content_for :title, "New progress entry" %>
+
+<h1>New progress entry</h1>
+
+<%= render "form", progress_entry: @progress_entry %>
+
+<br>
+
+<div>
+  <%= link_to "Back to progress entries", progress_entries_path %>
+</div>

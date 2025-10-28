@@ -1,23 +1,16 @@
-<div class="container py-4">
-    <h1 class="mb-4 text-center">Current Challenge Participants</h1>
-    <table id="challenge_participants" class="table table-striped">
-        <thead>
-            <tr>
-                <th>User</th>
-                <th>Challenge</th>
-                <th>Joined At</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @challenge_participants.each do |cp| %>
-                <tr>
-                <td><%= cp.user.username %></td>
-                <td><%= cp.challenge.title %></td>
-                <td><%= cp.created_at.strftime('%Y-%m-%d') %></td>
-                <td><%= link_to 'Details', cp, class: 'btn btn-primary' %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Challenge participants" %>
+
+<h1>Challenge participants</h1>
+
+<div id="challenge_participants">
+  <% @challenge_participants.each do |challenge_participant| %>
+    <%= render challenge_participant %>
+    <p>
+      <%= link_to "Show this challenge participant", challenge_participant %>
+    </p>
+  <% end %>
 </div>
+
+<%= link_to "New challenge participant", new_challenge_participant_path %>

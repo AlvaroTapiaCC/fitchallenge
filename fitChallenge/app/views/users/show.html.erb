@@ -1,10 +1,10 @@
-<div class="container mt-5">
-    <div class="card mx-auto">
-        <div class="card-body text-center">
-            <h2 class="card-title mb-3"><%= @user.username %></h2>
-            <p class="card-text"><%= @user.full_name %></p>
-            <p class="card-text text-muted mb-1"><%= @user.email %></p>
-            <p class="card-text p-3"><strong>Role:</strong> <%= @user.role %></p>
-        </div>
-    </div>
+<p style="color: green"><%= notice %></p>
+
+<%= render @user %>
+
+<div>
+  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Back to users", users_path %>
+
+  <%= button_to "Destroy this user", @user, method: :delete %>
 </div>

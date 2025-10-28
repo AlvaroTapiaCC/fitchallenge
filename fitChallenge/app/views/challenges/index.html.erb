@@ -1,23 +1,16 @@
-<div class="container py-4">
-    <h1 class="mb-4 text-center">Current challenges</h1>
-    <table id="challenges" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Creator</th>
-                <th>Description</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @challenges.each do |challenge| %>
-                <tr>
-                    <td><%= challenge.title %></td>
-                    <td><%= challenge.creator.username %></td>
-                    <td><%= challenge.description %></td>
-                    <td><%= link_to 'challenge info', challenge, class: 'btn btn-primary' %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Challenges" %>
+
+<h1>Challenges</h1>
+
+<div id="challenges">
+  <% @challenges.each do |challenge| %>
+    <%= render challenge %>
+    <p>
+      <%= link_to "Show this challenge", challenge %>
+    </p>
+  <% end %>
 </div>
+
+<%= link_to "New challenge", new_challenge_path %>

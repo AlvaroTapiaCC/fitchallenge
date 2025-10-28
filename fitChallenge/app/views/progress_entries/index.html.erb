@@ -1,25 +1,16 @@
-<div class="container py-4">
-    <h1 class="mb-4 text-center">Progress Entries</h1>
-    <table id="progress_entries" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Participant</th>
-                <th>Date</th>
-                <th>Description</th>
-                <th>Points Earned</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @progress_entries.each do |entry| %>
-                <tr>
-                <td><%= entry.participant.user.username %></td>
-                <td><%= entry.progress_date %></td>
-                <td><%= entry.description %></td>
-                <td><%= entry.points_earned %></td>
-                <td><%= link_to 'Details', entry, class: 'btn btn-primary' %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Progress entries" %>
+
+<h1>Progress entries</h1>
+
+<div id="progress_entries">
+  <% @progress_entries.each do |progress_entry| %>
+    <%= render progress_entry %>
+    <p>
+      <%= link_to "Show this progress entry", progress_entry %>
+    </p>
+  <% end %>
 </div>
+
+<%= link_to "New progress entry", new_progress_entry_path %>

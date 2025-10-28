@@ -1,12 +1,10 @@
-<div class="container mt-5">
-    <div class="card mx-auto">
-        <div class="card-body text-center">
-            <h2 class="card-title mb-3"><%= @challenge.title %></h2>
-            <p class="card-text text-muted mb-3"><%= @challenge.description %></p>
-            <p class="card-text">Start date: <%= @challenge.start %></p>
-            <p class="card-text">End date: <%= @challenge.end %></p>
-            <p class="card-text p-3"><strong>Points awarded:</strong> <%= @challenge.points %></p>
-            <h5 class="card-text">Creator: <%= @challenge.creator.username %> (id: <%= @challenge.creator.id %>)</h5>
-        </div>
-    </div>
+<p style="color: green"><%= notice %></p>
+
+<%= render @challenge %>
+
+<div>
+  <%= link_to "Edit this challenge", edit_challenge_path(@challenge) %> |
+  <%= link_to "Back to challenges", challenges_path %>
+
+  <%= button_to "Destroy this challenge", @challenge, method: :delete %>
 </div>

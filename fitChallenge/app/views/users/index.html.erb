@@ -1,23 +1,16 @@
-<div class="container py-4">
-    <h1 class="mb-4 text-center">Current Users</h1>
-    <table id="users" class="table table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Username</th>
-                <th>Role</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @users.each do |user| %>
-                <tr>
-                    <td><%= user.full_name %></td>
-                    <td><%= user.username %></td>
-                    <td><%= user.role %></td>
-                    <td><%= link_to 'User info', user, class: 'btn btn-primary' %></td>
-                </tr>
-            <% end %>
-        </tbody>
-    </table>
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Users" %>
+
+<h1>Users</h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <%= render user %>
+    <p>
+      <%= link_to "Show this user", user %>
+    </p>
+  <% end %>
 </div>
+
+<%= link_to "New user", new_user_path %>

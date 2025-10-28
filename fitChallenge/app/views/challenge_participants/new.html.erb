@@ -1,0 +1,11 @@
+<% content_for :title, "New challenge participant" %>
+
+<h1>New challenge participant</h1>
+
+<%= render "form", challenge_participant: @challenge_participant %>
+
+<br>
+
+<div>
+  <%= link_to "Back to challenge participants", challenge_participants_path %>
+</div>

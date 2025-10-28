@@ -1,0 +1,12 @@
+<% content_for :title, "Editing user badge" %>
+
+<h1>Editing user badge</h1>
+
+<%= render "form", user_badge: @user_badge %>
+
+<br>
+
+<div>
+  <%= link_to "Show this user badge", @user_badge %> |
+  <%= link_to "Back to user badges", user_badges_path %>
+</div>

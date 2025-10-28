@@ -4,8 +4,8 @@ class CreateChallenges < ActiveRecord::Migration[8.0]
       t.string :title
       t.text :description
       t.integer :points
-      t.date :start
-      t.date :end
+      t.date :start_date
+      t.date :end_date
       t.integer :creator_id
 
       t.timestamps
