@@ -1,9 +1,32 @@
-<nav class="navbar navbar-dark bg-dark mb-4">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
     <div class="container-fluid">
-        <ul class="navbar-nav flex-row w-100 d-flex justify-content-around">
-            <li class="nav-item">
-                <%= link_to "Home", root_path, class: "nav-link text-white" %>
-            </li>
-        </ul>
+        <div class="collapse navbar-collapse" id="mainNav">
+            <ul class="navbar-nav flex-row w-100 d-flex justify-content-around">
+                <li class="nav-item">
+                    <%= link_to "Home", root_path, class: "nav-link #{'active' if controller_name == 'home'}" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Challenges", challenges_path, class: "nav-link #{'active' if controller_name == 'challenges'}" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Participants", challenge_participants_path, class: "nav-link #{'active' if controller_name == 'challenge_participants'}" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Progress", progress_entries_path, class: "nav-link #{'active' if controller_name == 'progress_entries'}" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Badges", badges_path, class: "nav-link #{'active' if controller_name == 'badges'}" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Users", users_path, class: "nav-link #{'active' if controller_name == 'users'}" %>
+                </li>
+                <li class="nav-item">
+                    <%= link_to "Notifications", notifications_path, class: "nav-link #{'active' if controller_name == 'notifications'}" %>
+                </li>
+                <li class="nav-item ">
+                    <%= link_to "User Badges", user_badges_path, class: "nav-link #{'active' if controller_name == 'user_badges'}" %>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
