@@ -19,42 +19,29 @@ class ChallengesController < ApplicationController
   def edit
   end
 
-  # POST /challenges or /challenges.json
   def create
     @challenge = Challenge.new(challenge_params)
 
-    respond_to do |format|
-      if @challenge.save
-        format.html { redirect_to @challenge, notice: "Challenge was successfully created." }
-        format.json { render :show, status: :created, location: @challenge }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
-      end
+    if @challenge.save
+      redirect_to @challenge, notice: "Challenge was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /challenges/1 or /challenges/1.json
   def update
-    respond_to do |format|
-      if @challenge.update(challenge_params)
-        format.html { redirect_to @challenge, notice: "Challenge was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @challenge }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @challenge.errors, status: :unprocessable_entity }
-      end
+    if @challenge.update(challenge_params)
+      redirect_to @challenge, notice: "Challenge was successfully updated.", status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /challenges/1 or /challenges/1.json
   def destroy
     @challenge.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to challenges_path, notice: "Challenge was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
+    redirect_to challenges_path, notice: "Challenge was successfully destroyed.", status: :see_other
   end
 
   private

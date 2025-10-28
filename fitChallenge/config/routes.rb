@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
-  resources :user_badges
-  resources :progress_entries
-  resources :notifications
-  resources :challenge_participants
+  get "home/index"
+
   resources :users
   resources :challenges
+  resources :challenge_participants
   resources :badges
+  resources :user_badges
+  resources :notifications
+  resources :progress_entries
+
+  root "home#index"
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

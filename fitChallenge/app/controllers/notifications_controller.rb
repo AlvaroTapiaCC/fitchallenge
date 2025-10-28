@@ -19,42 +19,29 @@ class NotificationsController < ApplicationController
   def edit
   end
 
-  # POST /notifications or /notifications.json
   def create
     @notification = Notification.new(notification_params)
 
-    respond_to do |format|
-      if @notification.save
-        format.html { redirect_to @notification, notice: "Notification was successfully created." }
-        format.json { render :show, status: :created, location: @notification }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @notification.errors, status: :unprocessable_entity }
-      end
+    if @notification.save
+      redirect_to @notification, notice: "Notification was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
   # PATCH/PUT /notifications/1 or /notifications/1.json
   def update
-    respond_to do |format|
-      if @notification.update(notification_params)
-        format.html { redirect_to @notification, notice: "Notification was successfully updated.", status: :see_other }
-        format.json { render :show, status: :ok, location: @notification }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @notification.errors, status: :unprocessable_entity }
-      end
+    if @notification.update(notification_params)
+      redirect_to @notification, notice: "Notification was successfully updated.", status: :see_other
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
   # DELETE /notifications/1 or /notifications/1.json
   def destroy
     @notification.destroy!
-
-    respond_to do |format|
-      format.html { redirect_to notifications_path, notice: "Notification was successfully destroyed.", status: :see_other }
-      format.json { head :no_content }
-    end
+    redirect_to notifications_path, notice: "Notification was successfully destroyed.", status: :see_other
   end
 
   private

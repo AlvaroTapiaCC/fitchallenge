@@ -1,16 +1,27 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Badges" %>
-
-<h1>Badges</h1>
-
-<div id="badges">
-  <% @badges.each do |badge| %>
-    <%= render badge %>
-    <p>
-      <%= link_to "Show this badge", badge %>
-    </p>
-  <% end %>
+<div class="container py-4">
+    <h1 class="mb-4 text-center">Possible Badges</h1>
+    <table id="badges" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Icon</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @badges.each do |badge| %>
+                <tr class="align-middle">
+                    <td><%= badge.name %></td>
+                    <td><%= badge.description %></td>
+                    <td>
+                       <% if badge.icon_url.present? %>
+                           <%= image_tag badge.icon_url, alt: badge.name, class: "mb-3 img-fluid img-thumbnail w-25" %>
+                        <% end %>
+                    </td>
+                    <td><%= link_to 'badge info', badge, class: 'btn btn-primary' %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
-
-<%= link_to "New badge", new_badge_path %>
