@@ -1,17 +1,34 @@
-<%= form_with(model: challenge) do |form| %>
-  <% if challenge.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(challenge.errors.count, "error") %> prohibited this challenge from being saved:</h2>
-
-      <ul>
-        <% challenge.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with model: challenge do |form| %>
+	<% if challenge.errors.any? %>
+        <div class="alert alert-danger py-1 mb-1">
+            <ul class="mb-0">
+                <% challenge.errors.full_messages.each do |msg| %>
+                    <li class="p-0"><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>    
+    <div class="mb-3 fw-bold">
+        <%= form.label :title, class: "form-label" %>
+        <%= form.text_field :title, class: "form-control" %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-control" %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :start_date, "Start date", class: "form-label" %>
+        <%= form.date_field :start_date, class: "form-control" %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :end_date, "End date", class: "form-label" %>
+        <%= form.date_field :end_date, class: "form-control" %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :points, class: "form-label" %>
+        <%= form.number_field :points, class: "form-control" %>
+    </div>
+    <div>
+        <%= form.submit "Save Challenge", class: "btn btn-success" %>
+    </div>
 <% end %>

@@ -1,5 +1,5 @@
 <div class="container py-4">
-    <h1 class="mb-4 text-center">Current challenges</h1>
+    <h1 class="mb-4 text-center">Challenges List</h1>
     <table id="challenges" class="table table-striped">
         <thead>
             <tr>
@@ -15,9 +15,12 @@
                     <td><%= challenge.title %></td>
                     <td><%= challenge.creator.username %></td>
                     <td><%= challenge.description %></td>
-                    <td><%= link_to 'challenge info', challenge, class: 'btn btn-primary' %></td>
+                    <td>
+                        <%= link_to 'Check', challenge, class: 'btn btn-sm btn-primary' %>
+                    </td>
                 </tr>
             <% end %>
         </tbody>
     </table>
+    <%= link_to 'New challenge', new_challenge_path, class: 'btn btn-success' %>
 </div>

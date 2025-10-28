@@ -1,5 +1,5 @@
 <div class="container py-4">
-    <h1 class="mb-4 text-center">Current Challenge Participants</h1>
+    <h1 class="mb-4 text-center">Challenge Participants</h1>
     <table id="challenge_participants" class="table table-striped">
         <thead>
             <tr>
@@ -12,12 +12,15 @@
         <tbody>
             <% @challenge_participants.each do |cp| %>
                 <tr>
-                <td><%= cp.user.username %></td>
-                <td><%= cp.challenge.title %></td>
-                <td><%= cp.created_at.strftime('%Y-%m-%d') %></td>
-                <td><%= link_to 'Details', cp, class: 'btn btn-primary' %></td>
+                    <td><%= cp.user.username %></td>
+                    <td><%= cp.challenge.title %></td>
+                    <td><%= cp.created_at.strftime('%Y-%m-%d') %></td>
+                    <td>
+                        <%= link_to 'Check', cp, class: 'btn btn-sm btn-primary' %>
+                    </td>
                 </tr>
             <% end %>
         </tbody>
     </table>
+    <%= link_to 'New participant', new_challenge_participant_path, class: 'btn btn-success' %>
 </div>

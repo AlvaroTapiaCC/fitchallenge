@@ -1,12 +1,11 @@
-<% content_for :title, "Editing challenge participant" %>
-
-<h1>Editing challenge participant</h1>
-
-<%= render "form", challenge_participant: @challenge_participant %>
-
-<br>
-
-<div>
-  <%= link_to "Show this challenge participant", @challenge_participant %> |
-  <%= link_to "Back to challenge participants", challenge_participants_path %>
+<div class="container py-4">
+    <h1 class="mb-4">Edit Participant</h1>
+    <div class="card">
+        <div class="card-body">
+            <%= render "form", challenge_participant: @challenge_participant %>
+        </div>
+    </div>
+    <div class="mt-3">
+        <%= link_to "Cancel", @challenge_participant, class: "btn btn-secondary" %>
+    </div>
 </div>
