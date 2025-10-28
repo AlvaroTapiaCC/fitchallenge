@@ -1,17 +1,26 @@
-<%= form_with(model: badge) do |form| %>
-  <% if badge.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(badge.errors.count, "error") %> prohibited this badge from being saved:</h2>
-
-      <ul>
-        <% badge.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with model: badge do |form| %>
+    <% if badge.errors.any? %>
+        <div class="alert alert-danger py-1 mb-3">
+            <ul class="mb-0">
+                <% badge.errors.full_messages.each do |msg| %>
+                    <li class="p-0"><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="mb-3 fw-bold">
+        <%= form.label :name, class: "form-label" %>
+        <%= form.text_field :name, class: "form-control", required: true %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-control", rows: 4, required: true %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :icon_url, "Icon URL", class: "form-label" %>
+        <%= form.text_field :icon_url, class: "form-control", placeholder: "badges/badge1.jpg" %>
+    </div>
+    <div>
+        <%= form.submit "Save Badge", class: "btn btn-success" %>
+    </div>
 <% end %>

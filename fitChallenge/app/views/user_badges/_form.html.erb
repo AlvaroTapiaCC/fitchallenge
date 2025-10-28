@@ -1,17 +1,22 @@
-<%= form_with(model: user_badge) do |form| %>
-  <% if user_badge.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(user_badge.errors.count, "error") %> prohibited this user_badge from being saved:</h2>
-
-      <ul>
-        <% user_badge.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with model: user_badge do |form| %>
+    <% if user_badge.errors.any? %>
+        <div class="alert alert-danger py-1 mb-3">
+            <ul class="mb-0">
+                <% user_badge.errors.full_messages.each do |msg| %>
+                    <li class="p-0"><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="mb-3 fw-bold">
+        <%= form.label :user_id, class: "form-label" %>
+        <%= form.number_field :user_id, class: "form-control", required: true %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :badge_id, class: "form-label" %>
+        <%= form.number_field :badge_id, class: "form-control", required: true %>
+    </div>
+    <div>
+        <%= form.submit "Save User Badge", class: "btn btn-success" %>
+    </div>
 <% end %>

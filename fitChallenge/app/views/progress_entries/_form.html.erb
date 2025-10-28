@@ -1,17 +1,30 @@
-<%= form_with(model: progress_entry) do |form| %>
-  <% if progress_entry.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(progress_entry.errors.count, "error") %> prohibited this progress_entry from being saved:</h2>
-
-      <ul>
-        <% progress_entry.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<%= form_with model: progress_entry do |form| %>
+    <% if progress_entry.errors.any? %>
+        <div class="alert alert-danger py-1 mb-3">
+            <ul class="mb-0">
+                <% progress_entry.errors.full_messages.each do |msg| %>
+                    <li class="p-0"><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+    <div class="mb-3 fw-bold">
+        <%= form.label :participant_id, class: "form-label" %>
+        <%= form.number_field :participant_id, class: "form-control", required: true %>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.submit %>
-  </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :progress_date, class: "form-label" %>
+        <%= form.date_field :progress_date, class: "form-control", required: true %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :description, class: "form-label" %>
+        <%= form.text_area :description, class: "form-control", rows: 4, required: true %>
+    </div>
+    <div class="mb-3 fw-bold">
+        <%= form.label :points_earned, class: "form-label" %>
+        <%= form.number_field :points_earned, class: "form-control", required: true, min: 0, step: 1 %>
+    </div>
+    <div>
+        <%= form.submit "Save Progress", class: "btn btn-success" %>
+    </div>
 <% end %>

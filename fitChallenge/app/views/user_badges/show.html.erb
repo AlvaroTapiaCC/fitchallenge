@@ -1,10 +1,35 @@
-<div class="container mt-5">
-    <div class="card mx-auto">
-        <div class="card-body text-center">
-            <h2 class="card-title mb-3"><%= @user_badge.user.username %></h2>
-            <h5 class="card-text mb-3"><%= @user_badge.badge.name %></h5>
-            <p class="card-text mb-4"><%= @user_badge.badge.description %></p>
-            <p class="card-text text-muted mb-1">Earned at <%= @user_badge.created_at %></p>
+<div class="container py-4">
+    <h1 class="mb-3">User Badge</h1>
+    <div class="card mb-4">
+        <div class="card-body">
+            <p class="mb-2"><span class="fw-bold">User: </span><%= @user_badge.user.username %></p>
+            <p class="mb-2"><span class="fw-bold">Badge: </span><%= @user_badge.badge.name %></p>
+            <p class="mb-2"><span class="fw-bold">Description: </span><%= @user_badge.badge.description %></p>
+            <p class="mb-2 text-muted"><span class="fw-bold">Earned at: </span><%= @user_badge.created_at %></p>
+        </div>
+    </div>
+    <div class="d-flex gap-2 mt-4">
+        <%= link_to 'Edit', edit_user_badge_path(@user_badge), class: 'btn btn-primary' %>
+        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</button>
+        <%= link_to 'Back to list', user_badges_path, class: 'btn btn-secondary' %>
+    </div>
+</div>
+
+<div class="modal" id="deleteModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title w-100 text-center fs-3">Warning!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this user badge?</p>
+                <p>Deleting is permanent, it will be lost forever.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <%= button_to 'Delete', @user_badge, method: :delete, form: { class: 'd-inline' }, class: 'btn btn-danger' %>
+            </div>
         </div>
     </div>
 </div>

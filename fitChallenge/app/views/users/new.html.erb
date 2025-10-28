@@ -1,11 +1,11 @@
-<% content_for :title, "New user" %>
-
-<h1>New user</h1>
-
-<%= render "form", user: @user %>
-
-<br>
-
-<div>
-  <%= link_to "Back to users", users_path %>
+<div class="container py-4">
+  <h1 class="mb-4 text-center">New User</h1>
+  <div class="card">
+    <div class="card-body">
+      <%= render "form", user: @user %>
+    </div>
+  </div>
+  <div class="mt-3">
+    <%= link_to "Cancel", users_path, class: "btn btn-secondary" %>
+  </div>
 </div>

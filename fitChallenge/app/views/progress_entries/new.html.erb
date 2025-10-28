@@ -1,11 +1,11 @@
-<% content_for :title, "New progress entry" %>
-
-<h1>New progress entry</h1>
-
-<%= render "form", progress_entry: @progress_entry %>
-
-<br>
-
-<div>
-  <%= link_to "Back to progress entries", progress_entries_path %>
+<div class="container py-4">
+  <h1 class="mb-4 text-center">New Progress Entry</h1>
+  <div class="card">
+    <div class="card-body">
+      <%= render "form", progress_entry: @progress_entry %>
+    </div>
+  </div>
+  <div class="mt-3">
+    <%= link_to "Cancel", progress_entries_path, class: "btn btn-secondary" %>
+  </div>
 </div>
