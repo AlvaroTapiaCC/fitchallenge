@@ -1,4 +1,5 @@
 class BadgesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_badge, only: %i[ show edit update destroy ]
 
   # GET /badges or /badges.json
@@ -48,7 +49,7 @@ class BadgesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_badge
-      @badge = Badge.find(params.expect(:id))
+      @badge = Badge.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

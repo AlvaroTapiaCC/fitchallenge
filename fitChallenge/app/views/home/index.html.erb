@@ -1,99 +1,48 @@
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-10 text-center">
-            <h1 class="mb-2">Welcome to FitChallenge!</h1>
-            <p class="lead">Browse and join different fitness challenges.</p>
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-8 text-center">
+            <h1 class="mb-2">Welcome to FitChallenge</h1>
+            <p class="lead mb-4">Join fitness challenges, track your progress, and earn badges.</p>
+
+            <% if user_signed_in? %>
+                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                    <%= link_to "Browse challenges", challenges_path, class: "btn btn-primary" %>
+                    <%= link_to "Edit account", edit_user_registration_path, class: "btn btn-outline-secondary" %>
+                    <%= button_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-outline-danger" %>
+                </div>
+            <% else %>
+                <div class="d-flex flex-wrap gap-2 justify-content-center">
+                    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success" %>
+                    <%= link_to "Log in", new_user_session_path, class: "btn btn-primary" %>
+                </div>
+            <% end %>
         </div>
     </div>
 
-    <div class="row mt-4 g-4">
+    <hr class="my-5" />
+
+    <div class="row g-4">
         <div class="col-md-4">
-            <div class="card h-100">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Challenges (<%= Challenge.count %>)</h5>
-                    <p class="card-text">Create and manage fitness challenges.</p>
-                    <div class="d-flex gap-2">
-                        <%= link_to "View all", challenges_path, class: "btn btn-primary" %>
-                        <%= link_to "New", new_challenge_path, class: "btn btn-success" %>
-                    </div>
+                    <h5 class="card-title">Join challenges</h5>
+                    <p class="card-text">Find challenges that match your goals and compete with others.</p>
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
-            <div class="card h-100">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Participants (<%= ChallengeParticipant.count %>)</h5>
-                    <p class="card-text">Users participating in challenges.</p>
-                    <div class="d-flex gap-2">
-                        <%= link_to "View all", challenge_participants_path, class: "btn btn-primary" %>
-                        <%= link_to "New", new_challenge_participant_path, class: "btn btn-success" %>
-                    </div>
+                    <h5 class="card-title">Track progress</h5>
+                    <p class="card-text">Log your activity and earn points as you advance.</p>
                 </div>
             </div>
         </div>
-
         <div class="col-md-4">
-            <div class="card h-100">
+            <div class="card h-100 shadow-sm">
                 <div class="card-body">
-                    <h5 class="card-title">Progress Entries (<%= ProgressEntry.count %>)</h5>
-                    <p class="card-text">Track points and progress in challenges.</p>
-                    <div class="d-flex gap-2">
-                        <%= link_to "View all", progress_entries_path, class: "btn btn-primary" %>
-                        <%= link_to "New", new_progress_entry_path, class: "btn btn-success" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Badges (<%= Badge.count %>)</h5>
-                    <p class="card-text">Create and award achievement badges.</p>
-                    <div class="d-flex gap-2">
-                        <%= link_to "View all", badges_path, class: "btn btn-primary" %>
-                        <%= link_to "New", new_badge_path, class: "btn btn-success" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Users (<%= User.count %>)</h5>
-                    <p class="card-text">Manage app users and roles.</p>
-                    <div class="d-flex gap-2">
-                        <%= link_to "View all", users_path, class: "btn btn-primary" %>
-                        <%= link_to "New", new_user_path, class: "btn btn-success" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">Notifications (<%= Notification.count %>)</h5>
-                    <p class="card-text">Messages sent to users.</p>
-                    <div class="d-flex gap-2">
-                        <%= link_to "View all", notifications_path, class: "btn btn-primary" %>
-                        <%= link_to "New", new_notification_path, class: "btn btn-success" %>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">User Badges (<%= UserBadge.count %>)</h5>
-                    <p class="card-text">Badges awarded to users.</p>
-                    <div class="d-flex gap-2">
-                        <%= link_to "View all", user_badges_path, class: "btn btn-primary" %>
-                        <%= link_to "New", new_user_badge_path, class: "btn btn-success" %>
-                    </div>
+                    <h5 class="card-title">Earn badges</h5>
+                    <p class="card-text">Collect achievements for milestones and consistency.</p>
                 </div>
             </div>
         </div>

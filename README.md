@@ -19,3 +19,14 @@ All necessary models were properly created, adding the ssociations and validatio
 The styling of the views was done using Bootstrap, ensuring responsiveness and a basic aestethic design. Aditionaly, a home page and a navigation bar were added, both with minimal functions, but preparing the road for the future assignments.
 
 Finally, some adjustments to the views were done to try and provide a good UX. For this, some views show formated information to improve the presentation of the data. For example, the boolean fields were adapted to show a string more readable, or show the username associated to an id, to show meaningful information.
+
+## Assignment 3
+
+## Assignment 4
+
+Authorization and authentication were implemented, so only allowed users can acces and manage each area accordingly.
+Also, only logged in users can see the rest of the views other than the challenges,
+
+### Test User 
+
+admin1@gmail.com, password: admin1234

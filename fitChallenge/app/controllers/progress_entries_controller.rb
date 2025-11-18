@@ -1,9 +1,10 @@
 class ProgressEntriesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_progress_entry, only: %i[ show edit update destroy ]
 
   # GET /progress_entries or /progress_entries.json
   def index
-    @progress_entries = ProgressEntry.all
+    @progress_entries = ProgressEntry.joins(:participant).where(challenge_participants: { user_id: current_user.id })
   end
 
   # GET /progress_entries/1 or /progress_entries/1.json
@@ -47,7 +48,7 @@ class ProgressEntriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_progress_entry
-      @progress_entry = ProgressEntry.find(params.expect(:id))
+      @progress_entry = ProgressEntry.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

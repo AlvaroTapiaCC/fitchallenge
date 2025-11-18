@@ -12,8 +12,9 @@
 
 User.destroy_all
 
-user1 = User.create! username: "JohnJones123", first_name: "John", last_name: "Jones", email: "j.jones123@gmail.com", role: "Admin"
-user2 = User.create! username: "AlbertEinstein999", first_name: "Albert", last_name: "Einstein", email: "a.einstein@gmail.com", role: "Regular"
+user0 = User.create! username: "admin1", first_name: "any", last_name: "name", email: "admin1@gmail.com", password: "admin1234" ,role: "admin" 
+user1 = User.create! username: "JohnJones123", first_name: "John", last_name: "Jones", email: "j.jones123@gmail.com", password: "John12345" ,role: "regular"
+user2 = User.create! username: "AlbertEinstein999", first_name: "Albert", last_name: "Einstein", email: "a.einstein@gmail.com", password: "Albert12345" ,role: "regular"
 
 puts "Users Created Succesfuly"
 

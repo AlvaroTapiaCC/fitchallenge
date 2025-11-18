@@ -13,7 +13,7 @@
             <% @challenges.each do |challenge| %>
                 <tr>
                     <td><%= challenge.title %></td>
-                    <td><%= challenge.creator.username %></td>
+                    <td><%= challenge.creator&.username || 'Unknown' %></td>
                     <td><%= challenge.description %></td>
                     <td>
                         <%= link_to 'Check', challenge, class: 'btn btn-sm btn-primary' %>
@@ -22,5 +22,7 @@
             <% end %>
         </tbody>
     </table>
-    <%= link_to 'New challenge', new_challenge_path, class: 'btn btn-success' %>
+            <% if can?(:create, Challenge) %>
+                <%= link_to 'New challenge', new_challenge_path, class: 'btn btn-success' %>
+            <% end %>
 </div>

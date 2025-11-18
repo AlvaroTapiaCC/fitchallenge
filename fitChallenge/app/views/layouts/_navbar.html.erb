@@ -8,9 +8,8 @@
                 <li class="nav-item">
                     <%= link_to "Challenges", challenges_path, class: "nav-link #{'active' if controller_name == 'challenges'}" %>
                 </li>
-                <li class="nav-item">
-                    <%= link_to "Participants", challenge_participants_path, class: "nav-link #{'active' if controller_name == 'challenge_participants'}" %>
-                </li>
+                <% if user_signed_in? %>
+                
                 <li class="nav-item">
                     <%= link_to "Progress", progress_entries_path, class: "nav-link #{'active' if controller_name == 'progress_entries'}" %>
                 </li>
@@ -26,6 +25,7 @@
                 <li class="nav-item ">
                     <%= link_to "User Badges", user_badges_path, class: "nav-link #{'active' if controller_name == 'user_badges'}" %>
                 </li>
+                <% end %>
             </ul>
         </div>
     </div>

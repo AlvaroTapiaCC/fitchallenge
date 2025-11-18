@@ -24,5 +24,7 @@
             <% end %>
         </tbody>
     </table>
-    <%= link_to 'New badge', new_badge_path, class: 'btn btn-success' %>
+        <% if can?(:create, Badge) %>
+            <%= link_to 'New badge', new_badge_path, class: 'btn btn-success' %>
+        <% end %>
 </div>

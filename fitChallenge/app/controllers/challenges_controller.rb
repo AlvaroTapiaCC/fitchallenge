@@ -1,4 +1,7 @@
 class ChallengesController < ApplicationController
+  # Public browseable actions
+  skip_before_action :authenticate_user!, only: %i[index show]
+  load_and_authorize_resource
   before_action :set_challenge, only: %i[ show edit update destroy ]
 
   # GET /challenges or /challenges.json
@@ -12,7 +15,7 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/new
   def new
-    @challenge = Challenge.new
+    @challenge = current_user.challenges.build
   end
 
   # GET /challenges/1/edit
@@ -20,7 +23,7 @@ class ChallengesController < ApplicationController
   end
 
   def create
-    @challenge = Challenge.new(challenge_params)
+    @challenge = current_user.challenges.build(challenge_params)
 
     if @challenge.save
       redirect_to @challenge, notice: "Challenge was successfully created."
@@ -47,11 +50,11 @@ class ChallengesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_challenge
-      @challenge = Challenge.find(params.expect(:id))
+      @challenge = Challenge.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def challenge_params
-      params.fetch(:challenge, {})
+      params.require(:challenge).permit(:title, :description, :points, :start_date, :end_date)
     end
 end
